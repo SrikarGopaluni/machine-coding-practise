@@ -1,0 +1,23 @@
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.input {
+	padding: 8px;
+	width: 200px;
+}
+
+.chips-container {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.chip {
+	background-color: gray;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-top: 1rem;
+}
