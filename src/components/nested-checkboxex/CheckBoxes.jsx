@@ -22,13 +22,16 @@ const CheckBoxes = ({ data, checked, setChecked }) => {
 				if (!node.children || node.children.length === 0)
 					return newState[node.id] || false;
 
-				const allChildrenChecked = node.children.every((child) =>
-					verifyChecked(child),
-				);
+				// forEach guarantees every child is visited (no short-circuit)
+				let allChecked = true;
+				node.children.forEach((child) => {
+					const childChecked = verifyChecked(child);
+					if (!childChecked) allChecked = false;
+				});
 
-				newState[node.id] = allChildrenChecked;
+				newState[node.id] = allChecked;
 
-				return allChildrenChecked;
+				return allChecked;
 			};
 
 			treeData.forEach((node) => verifyChecked(node));
